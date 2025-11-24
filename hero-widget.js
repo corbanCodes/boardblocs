@@ -407,7 +407,7 @@
   ];
 
   function getFileIcon(type) {
-    switch(type) {
+    switch (type) {
       case 'folder': return '<span class="folder-icon">📁</span>';
       case 'file-ppt': return '<span class="file-icon">📄</span>';
       case 'file-excel': return '<span class="file-icon" style="color: #16a34a;">📊</span>';
@@ -419,7 +419,7 @@
   function startAnimation() {
     const listEl = document.getElementById('widget-list');
     const cursorEl = document.getElementById('animated-cursor');
-    
+
     if (!listEl) return;
 
     // Hide cursor completely
@@ -441,7 +441,7 @@
 
     // Render static view with Q1 folder open
     let html = '';
-    
+
     baseFolders.forEach(folder => {
       html += `
         <div class="widget-item">
@@ -450,7 +450,7 @@
           <span class="widget-item-text">${folder.name}</span>
         </div>
       `;
-      
+
       // Add files if this is the expanded folder
       if (folder.expanded) {
         files.forEach(file => {
@@ -464,7 +464,7 @@
         });
       }
     });
-    
+
     listEl.innerHTML = html;
   }
 

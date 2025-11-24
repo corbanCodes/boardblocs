@@ -22,11 +22,14 @@
         .hero-bg-image {
           position: absolute;
           bottom: 0;
+          top: 0;
           left: 0;
           width: 90%;
           max-width: 1300px;
           min-width: 730px;
           height: auto;
+          object-fit: contain;
+          object-position: bottom left;
           z-index: 1;
           pointer-events: none;
         }
@@ -69,13 +72,16 @@
           .hero-bg-image {
             content: url('mobile hero.png');
             left: 50%;
-            top: 30%;
+            top: max(0px, 30%);
             transform: translate(-50%, -50%);
             width: 105vw;
             max-width: 900px;
             min-width: 600px;
             height: auto;
+            max-height: calc(100% + 40px);
             bottom: auto;
+            object-fit: contain;
+            object-position: center;
           }
 
           .hero-container {
@@ -230,7 +236,7 @@
   function loadWidget() {
     const script = document.createElement('script');
     script.src = './hero-widget.js';
-    script.onload = function() {
+    script.onload = function () {
       if (window.HeroWidget) {
         const container = document.getElementById('hero-widget-container');
         if (container) {
@@ -247,7 +253,7 @@
 
   // Run when DOM is ready
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       loadHero();
       loadWidget();
     });

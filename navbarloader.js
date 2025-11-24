@@ -697,9 +697,25 @@
         .product-footer a i {
           font-size: 1rem;
         }
+
+        /* Mobile menu overlay fix */
+        @media (max-width: 1199.98px) {
+          .navbar-collapse {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-height: 85vh;
+            overflow-y: auto;
+            border-top: 1px solid #f3f4f6;
+          }
+        }
       </style>
 
-      <nav class="navbar navbar-expand-xl bg-white py-3">
+      <nav class="navbar navbar-expand-xl bg-white py-3" style="position: sticky; top: 0; z-index: 1020; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
         <div class="container-fluid px-4">
           <a class="navbar-brand d-flex align-items-center" href="index.html">
             <img src="logo.png" alt="Boardblocs logo" class="me-2" />
@@ -1214,7 +1230,7 @@
     `;
 
     // Helper function to check if we're in mobile view
-    var isMobileView = function() {
+    var isMobileView = function () {
       return window.innerWidth < 1100;
     };
 
@@ -1223,7 +1239,7 @@
     var productLink = container.querySelector("#navProduct");
     var productPanel = container.querySelector(".dropdown-product-panel");
     var mobileProductMenu = container.querySelector("#mobileProduct");
-    
+
     var solutionsItem = container.querySelector(".dropdown-solutions");
     var solutionsLink = container.querySelector("#navSolutions");
     var solutionsPanel = container.querySelector(".dropdown-solutions-panel");
@@ -1276,13 +1292,13 @@
     if (productItem && productLink && productPanel) {
       var toggleProduct = function (e) {
         e.preventDefault();
-        
+
         // On mobile, toggle mobile submenu instead
         if (isMobileView()) {
           mobileProductMenu.classList.toggle("show");
           return;
         }
-        
+
         e.stopPropagation();
         // Close other menus if open
         if (isSolutionsOpen) {
@@ -1306,14 +1322,14 @@
       productLink.addEventListener("click", toggleProduct);
 
       // Close when clicking outside
-      document.addEventListener("click", function(e) {
+      document.addEventListener("click", function (e) {
         if (isProductOpen && !productItem.contains(e.target) && !productPanel.contains(e.target)) {
           closeProduct();
         }
       });
 
       // Prevent clicks inside the panel from closing it
-      productPanel.addEventListener("click", function(e) {
+      productPanel.addEventListener("click", function (e) {
         e.stopPropagation();
       });
     }
@@ -1322,13 +1338,13 @@
     if (solutionsItem && solutionsLink && solutionsPanel) {
       var toggleSolutions = function (e) {
         e.preventDefault();
-        
+
         // On mobile, toggle mobile submenu instead
         if (isMobileView()) {
           mobileSolutionsMenu.classList.toggle("show");
           return;
         }
-        
+
         e.stopPropagation();
         // Close other menus if open
         if (isProductOpen) {
@@ -1352,14 +1368,14 @@
       solutionsLink.addEventListener("click", toggleSolutions);
 
       // Close when clicking outside
-      document.addEventListener("click", function(e) {
+      document.addEventListener("click", function (e) {
         if (isSolutionsOpen && !solutionsItem.contains(e.target) && !solutionsPanel.contains(e.target)) {
           closeSolutions();
         }
       });
 
       // Prevent clicks inside the panel from closing it
-      solutionsPanel.addEventListener("click", function(e) {
+      solutionsPanel.addEventListener("click", function (e) {
         e.stopPropagation();
       });
     }
@@ -1368,13 +1384,13 @@
     if (resourcesItem && resourcesLink && resourcesPanel) {
       var toggleResources = function (e) {
         e.preventDefault();
-        
+
         // On mobile, toggle mobile submenu instead
         if (isMobileView()) {
           mobileResourcesMenu.classList.toggle("show");
           return;
         }
-        
+
         e.stopPropagation();
         // Close other menus if open
         if (isProductOpen) {
@@ -1398,14 +1414,14 @@
       resourcesLink.addEventListener("click", toggleResources);
 
       // Close when clicking outside
-      document.addEventListener("click", function(e) {
+      document.addEventListener("click", function (e) {
         if (isResourcesOpen && !resourcesItem.contains(e.target) && !resourcesPanel.contains(e.target)) {
           closeResources();
         }
       });
 
       // Prevent clicks inside the panel from closing it
-      resourcesPanel.addEventListener("click", function(e) {
+      resourcesPanel.addEventListener("click", function (e) {
         e.stopPropagation();
       });
     }
@@ -1414,13 +1430,13 @@
     if (whyItem && whyLink && whyPanel) {
       var toggleWhy = function (e) {
         e.preventDefault();
-        
+
         // On mobile, toggle mobile submenu instead
         if (isMobileView()) {
           mobileWhyMenu.classList.toggle("show");
           return;
         }
-        
+
         e.stopPropagation();
         // Close other menus if open
         if (isProductOpen) {
@@ -1444,14 +1460,14 @@
       whyLink.addEventListener("click", toggleWhy);
 
       // Close when clicking outside
-      document.addEventListener("click", function(e) {
+      document.addEventListener("click", function (e) {
         if (isWhyOpen && !whyItem.contains(e.target) && !whyPanel.contains(e.target)) {
           closeWhy();
         }
       });
 
       // Prevent clicks inside the panel from closing it
-      whyPanel.addEventListener("click", function(e) {
+      whyPanel.addEventListener("click", function (e) {
         e.stopPropagation();
       });
     }
